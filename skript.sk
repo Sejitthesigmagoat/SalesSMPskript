@@ -1,1 +1,32 @@
+on join:
+	set {num.%player's UUID%} to a random integer from 1 to 8
 
+function spiral(Location: location, stepSize: number, particle: visual effect):
+	set {_v} to spherical vector radius 1, yaw 0, pitch 0
+	set {_ref} to {_v}
+	set the pitch of {_ref} to 90
+	loop 20 times:
+		loop 720 / {_stepSize} times:
+			add {_stepSize} to the yaw of {_v}
+			play 0.05 {_particle} at {_location} ~ {_v} ~ vector(0,loop-iteration-2 / 30,0)
+			rotate {_v} around {_ref} by 0.5
+		wait 0.1 seconds
+
+command /spiral:
+	trigger:
+		if {num.%player's UUID%} = 1:
+			spiral(player, 7, dark blue dust)
+		if {num.%player's UUID%} = 2:
+			spiral(player, 7, green dust)
+		if {num.%player's UUID%} = 3:
+			spiral(player, 7, aqua dust)
+		if {num.%player's UUID%} = 4:
+			spiral(player, 7, red dust)
+		if {num.%player's UUID%} = 5:
+			spiral(player, 7, purple dust)
+		if {num.%player's UUID%} = 6:
+			spiral(player, 7, orange dust)
+		if {num.%player's UUID%} = 7:
+			spiral(player, 7, light gray dust)
+		if {num.%player's UUID%} = 8:
+			spiral(player, 7, dark gray dust)
